@@ -4,7 +4,7 @@ const Booking = () => {
   const [service, setService] = useState({});
   const { bookingId } = useParams();
   useEffect(() => {
-    fetch(`http://localhost:5000/services/${bookingId}`)
+    fetch(`https://stormy-springs-38622.herokuapp.com/services/${bookingId}`)
       .then((res) => res.json())
       .then((data) => setService(data));
   }, []);

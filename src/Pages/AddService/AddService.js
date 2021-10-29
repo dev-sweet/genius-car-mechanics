@@ -3,20 +3,16 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import './AddService.css';
 const AddService = () => {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    reset,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
-    axios.post('http://localhost:5000/services', data).then((res) => {
-      if (res.data.insertedId) {
-        alert('Your service is added successfully');
-        reset();
-      }
-    });
+    axios
+      .post('https://stormy-springs-38622.herokuapp.com/services', data)
+      .then((res) => {
+        if (res.data.insertedId) {
+          alert('Your service is added successfully');
+          reset();
+        }
+      });
   };
 
   return (
@@ -42,8 +38,6 @@ const AddService = () => {
           {...register('img', { required: true })}
           placeholder="Image Url"
         />
-
-        {errors.exampleRequired && <span>This field is required</span>}
 
         <input type="submit" />
       </form>

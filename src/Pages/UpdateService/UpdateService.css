@@ -1,0 +1,20 @@
+.update-service form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.update-service form input,
+textarea {
+  width: 40%;
+  margin-top: 10px;
+  outline: none;
+  border: 1px solid rgb(218, 218, 218);
+  padding: 15px;
+}
+.update-service form input:focus {
+  border-color: rgb(119, 119, 119);
+}
+.update-service form textarea:focus {
+  border-color: rgb(119, 119, 119);
+}

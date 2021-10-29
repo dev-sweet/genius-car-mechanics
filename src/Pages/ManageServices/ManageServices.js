@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 
 const ManageServices = () => {
   const [services, setServices] = useState([]);
+  const history = useHistory();
+  const handleUpdate = (id) => {
+    history.push(`/manageServices/update/${id}`);
+  };
+  // handle delete services
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/services/${id}`, {
+    fetch(`https://stormy-springs-38622.herokuapp.com/services/${id}`, {
       method: 'DELETE',
     })
       .then((res) => res.json())
@@ -18,7 +24,7 @@ const ManageServices = () => {
       });
   };
   useEffect(() => {
-    fetch('http://localhost:5000/services')
+    fetch('https://stormy-springs-38622.herokuapp.com/services')
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
@@ -36,6 +42,12 @@ const ManageServices = () => {
                     <h3>{service.name}</h3>
                     <h5>Price : {service.price}</h5>
                     <p>{service.description}</p>
+                    <button
+                      className="btn btn-success mx-3"
+                      onClick={() => handleUpdate(service._id)}
+                    >
+                      Update
+                    </button>
                     <button
                       className="btn btn-danger"
                       onClick={() => handleDelete(service._id)}
